@@ -72,6 +72,7 @@ class ReportState(str, enum.Enum):
 class ReportDataFormat(str, enum.Enum):
     VISUALIZATION = "PNG"
     DATA = "CSV"
+    TEXT = "TEXT"
 
 
 report_schedule_user = Table(
