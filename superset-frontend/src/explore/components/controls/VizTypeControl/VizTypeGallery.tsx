@@ -169,9 +169,6 @@ const SearchWrapper = styled.div`
   ${({ theme }) => `
     grid-area: search;
     margin: ${theme.gridUnit * 2}px ${theme.gridUnit * 3}px;
-    input {
-      font-size: ${theme.typography.sizes.s};
-    }
     .ant-input-affix-wrapper {
       padding-left: ${theme.gridUnit * 2}px;
     }
@@ -194,7 +191,6 @@ const SelectorLabel = styled.button`
     padding: 0 ${theme.gridUnit * 6}px 0 ${theme.gridUnit}px;
     border-radius: ${theme.borderRadius}px;
     line-height: 2em;
-    font-size: ${theme.typography.sizes.s};
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
