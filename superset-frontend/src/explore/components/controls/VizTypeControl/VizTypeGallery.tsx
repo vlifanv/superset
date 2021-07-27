@@ -595,11 +595,6 @@ export default function VizTypeGallery(props: VizTypeGalleryProps) {
         icon: <Icons.Tags />,
         selectors: RECOMMENDED_TAGS,
       },
-      ALL: {
-        title: t('All'),
-        icon: <Icons.Ballot />,
-        selectors: [ALL_CHARTS],
-      },
       CATEGORY: {
         title: t('Category'),
         icon: <Icons.Category />,
@@ -623,6 +618,19 @@ export default function VizTypeGallery(props: VizTypeGalleryProps) {
   return (
     <VizPickerLayout className={className}>
       <LeftPane>
+        <Selector
+          css={({ gridUnit }) =>
+            // adjust style for not being inside a collapse
+            css`
+              margin: ${gridUnit * 2}px;
+              margin-bottom: 0;
+            `
+          }
+          selector={ALL_CHARTS}
+          icon={<Icons.Ballot />}
+          isSelected={!isActivelySearching && ALL_CHARTS === activeSelector}
+          onClick={clickSelector}
+        />
         <Collapse
           expandIconPosition="right"
           ghost
