@@ -504,7 +504,7 @@ export default function VizTypeGallery(props: VizTypeGalleryProps) {
           a.localeCompare(b),
         )
         .filter(tag => RECOMMENDED_TAGS.indexOf(tag) === -1),
-    [chartsByCategory],
+    [chartsByTags],
   );
 
   const sortedMetadata = useMemo(
