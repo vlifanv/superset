@@ -400,7 +400,7 @@ const Selector: React.FC<{
   icon: JSX.Element;
   isSelected: boolean;
   onClick: (selector: string) => void;
-  onClear: (e: React.MouseEvent) => void;
+  onClear?: (e: React.MouseEvent) => void;
   className?: string;
 }> = ({ selector, icon, isSelected, onClick, onClear, className }) => {
   const btnRef = useRef<HTMLButtonElement>(null);
@@ -429,7 +429,7 @@ const Selector: React.FC<{
     >
       {icon}
       {selector}
-      <CloseOutlined className="cancel" onClick={onClear} />
+      {onClear && <CloseOutlined className="cancel" onClick={onClear} />}
     </SelectorLabel>
   );
 };
@@ -580,14 +580,17 @@ export default function VizTypeGallery(props: VizTypeGalleryProps) {
     ],
   );
 
-  const clearSelector = useCallback(e => {
-    e.stopPropagation();
-    if (isSearchFocused) {
-      stopSearching();
-    }
-    // clear current selector and set all charts
-    setActiveSelector(ALL_CHARTS);
-  }, []);
+  const clearSelector = useCallback(
+    e => {
+      e.stopPropagation();
+      if (isSearchFocused) {
+        stopSearching();
+      }
+      // clear current selector and set all charts
+      setActiveSelector(ALL_CHARTS);
+    },
+    [isSearchFocused, stopSearching],
+  );
 
   const sectionMap = useMemo(
     () => ({
